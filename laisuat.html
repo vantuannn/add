@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laisuatnganhang</title>
+</head>
+<body>
+    <script>
+       let tienVay = parseInt(prompt("so tien can vay"));
+            let laiSuat = parseFloat(prompt("lai xuat moi nam %")/100);
+            let soNam = parseInt(prompt("thoi gian vay"));
+
+            let lai1Nam = tienVay*laiSuat;
+
+            document.write("sotienlaiphaicha1nam" + lai1Nam + "$");
+            let tienPhaiCha = tienVay + (soNam*lai1Nam);
+            document.write("<br/>");
+           document.write("sotienphaicha" + tienPhaiCha + "$");
+    </script>
+</body>
+</html>

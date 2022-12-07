@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sô ngày trong tháng</title>
+ </head>
+ <body>
+    <form>
+        <input type="number" id="number" placeholder="Chọn Tháng">
+        <input type="button" id="count" onclick="calclulate();" value="Tính">
+        <hr>
+        <p id="result"></p>
+    </form>
+    <script>
+   function calclulate(){
+    let result = '';
+    let month =document.getElementById("number").value;
+    if (month > 12) {
+        result = "Số nhập không phải là tháng"
+    }
+    else if(month == 2){
+        result = "Tháng có 28 hoặc 29 ngày"
+    } else if (month% 2== 0) {
+        result = "Tháng " + month + " có 30 ngày"
+    } else {
+        result = "Tháng " + month + " có 31 ngày"
+    }
+    document.getElementById("result").innerHTML = result
+   }
+    </script>
+ </body>
+ </html>

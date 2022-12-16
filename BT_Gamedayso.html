@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #a {
+            text-align: center;
+            color: darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="a">Game hãy Thử Đoán xem</h1>
+    <form id="Random">
+        <input type="button" onclick="Click()" value="Chơi">
+    </form>
+</body>
+<script>
+    function Click() {
+        let max = prompt("Nhập số số lớn nhất: ")
+        console.log(max);
+        let random = Math.floor(Math.random() * max) + 1;
+        let number = 0
+        let end = 0
+        console.log(random);
+
+        while (number != random) {
+            number = parseInt(prompt("Hãy Nhập Số Bạn Dự Đoán: "))
+            if (number < random) {
+                alert("Sai");
+                end++;
+            } else if (number > random) {
+                alert("Gần Đúng Rồi");
+                end++;
+            } else {
+                alert("Đáp Án Đúng");
+            }
+        }
+        if (end == 3) {
+            alert("Bạn Thua rồi");
+        }
+        document.getElementById("Click()").value = "Chơi Lại"
+    }
+</script>
+
+</html>

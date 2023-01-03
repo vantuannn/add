@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><link rel="stylesheet" href="nmlt.css">
+    <div id="head">
+        <h1>Quản lí sinh viên</h1>
+    </div>
+    <div id="conten">
+        <h2>Thông tin sinh viên</h2>
+            <form>
+            <div id="left">
+            <table>
+                <tr>
+                    <td><lable for="">Mã sinh viên</lable></td>
+                    <td><input type="Number" id="id"placeholder="Nhập mã sinh viên"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Họ và Tên</label></td>
+                    <td><input type="text" id="name"placeholder="Nhập tên"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Tuổi</label></td>
+                    <td><input type="number" id="age"placeholder="Nhập tuổi"></td>
+                </tr>  
+                  <tr>
+                    <td><label for="">Email</label></td>
+                    <td><input type="text" id="email"placeholder="Nhập email"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Lớp</label></td>
+                    <td>
+                        <select id="class">
+                            <option value=""> Chọn lớp</option>
+                            <option value="IBSK1D1"> IBSK1D1</option>
+                            <option value="IBSK1D2"> IBSK1D2</option>
+                            <option value="Khác"> Khác</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="">Giới tính</label></td>
+                    <td>
+                        <select id="sex">
+                            <option value=""> Chọn giới tính</option>
+                            <option value="Nam"> Nam</option>
+                            <option value="Nữ"> Nữ</option>
+                            <option value="Khác"> Khác</option>
+
+                        </select>
+                    </td>
+                </tr>
+            </table>
+                
+            </div>
+            </form>
+    </div>
+    <div>
+        <button class="btn btn-primary"onclick="getAdd()">Xác Nhận</button>
+    <div id="clear">
+    <hr>
+    <table class="table table-blue table-striped" border="1" id="render">
+    <tr>
+        <th>Mã sinh viên</th>
+        <th>Họ và tên</th>
+        <th>Tuổi</th>
+        <th>Email</th>
+        <th>Lớp</th>
+        <th>Giới tính</th>
+        <th>Hành động</th>
+    </tr>
+    </table>
+</div>
+<div id="footer">
+
+</div>
+</body>
+<script>
+    var data=[];
+
+    function getAdd(){
+        var item_sex=document.getElementById("sex").value;
+        var item_email=document.getElementById("email").value;
+        var item_id=document.getElementById("id").value;
+        var item_name=document.getElementById("name").value;
+        var item_age=document.getElementById("age").value;
+        var item_class=document.getElementById("class").value;
+        if (item_id==""||item_name==""||item_class==""||item_sex==""||item_email=="") {
+            alert("Yêu cầu nhập đầy đủ")
+        } else {
+            var obj = {
+                Id :item_id,
+                Name:item_name,
+                Age:item_age,
+                Class:item_class,
+                Email:item_email,
+                Sex:item_sex
+            }
+        let index = data.findIndex((c)=>c.Id==obj.Id)
+        if (index >=0) {
+            data.splice(index,1,obj)            
+        } else {
+            data.push(obj)
+        }
+        render()
+        clear()
+        }
+    }
+    function render(){
+        table = `<tr>
+            <th>Mã sinh viên </th>
+            <th>Họ và tên </th>
+            <th>Lớp</th>
+            <th>Email<th>
+            <th>Giới tính</th>
+            <th>Hành động</th>
+            </tr>`
+            for (let i = 0; i< data.length; i++) {
+              table += `<tr>
+            <th>${data[i].Id} </th>
+            <th>${data[i].Name}</th>
+            <th>${data[i].Age}</th>
+            <th>${data[i].Email}</th>
+            <th>${data[i].Class}</th>
+            <th>${data[i].Sex}</th>
+            <th>
+                <button class="btn btn-danger"onclick="deleteItem(${data[i].Id})">Delete</button>
+                <button class="btn btn-warning"onclick="editItem(${data[i].Id})">Edit</button></th>
+            </tr>`
+               
+        }
+        document.getElementById("render").innerHTML=table;
+    }
+
+function clear(){
+    document.getElementById("id").value="";
+    document.getElementById("name").value="";
+    document.getElementById("age").value="";
+    document.getElementById("class").value="";
+    document.getElementById("email").value="";
+    document.getElementById("sex").value="";
+                    }
+    function deleteItem(x){
+        for (let i = 0; i < data.length; i++) {
+        if (data[i].Id==x) {
+            data.splice(i,1)
+            render()
+        }
+    }
+    alert("xoá thành công");
+    }
+function editItem(x){
+        alert("bạn có chắc muốn thay đổi thông tin");
+        
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].Id==x) {
+                document.getElementById("id").value=data[i].Id;
+                document.getElementById("name").value=data[i].Name;
+                document.getElementById("age").value=data[i].Age;
+                document.getElementById("class").value=data[i].Class;
+                document.getElementById("email").value=data[i].Email;
+                document.getElementById("sex").value=data[i].Sex;
+                
+            }
+            
+        }
+    }
+
+</script>
+</html>

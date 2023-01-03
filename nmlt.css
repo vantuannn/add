@@ -1,0 +1,30 @@
+body{
+    background-color: pink
+}
+#head{
+    margin: auto;
+    background-color:rgb(251, 146, 255)
+}
+h1{
+    color: rgb(15, 14,15);
+}
+#conten{
+    max-width: 100%;
+}
+#left{
+    float:left ;
+}
+form{
+    margin-top: 35px;
+    margin-bottom: 15;
+    display: flex;
+    justify-content: space-between;
+}
+#right{
+    float: left;
+    padding-right: 100px;
+
+}
+#clear{
+    clear: both;
+}
